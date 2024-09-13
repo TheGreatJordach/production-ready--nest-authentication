@@ -14,8 +14,15 @@ module.exports = {
     [
       "jest-junit",
       {
-        outputDirectory: "./coverage",
+        outputDirectory: "../coverage",
         outputName: "junit.xml",
+      },
+    ],
+    [
+      "jest-sonar-reporter",
+      {
+        outputDirectory: "./coverage",
+        outputName: "sonar-report.xml",
       },
     ],
   ],

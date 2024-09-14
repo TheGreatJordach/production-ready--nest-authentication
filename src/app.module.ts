@@ -3,6 +3,8 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigurationModule } from "./configuration/configuration.module";
 import { CacheModule } from "@nestjs/cache-manager";
+import { DatabaseModule } from "./database/database.module";
+import { UsersModule } from "./users/users.module";
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import { CacheModule } from "@nestjs/cache-manager";
         };
       },
     }),
+    DatabaseModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

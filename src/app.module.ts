@@ -5,6 +5,7 @@ import { ConfigurationModule } from "./configuration/configuration.module";
 import { CacheModule } from "@nestjs/cache-manager";
 import { DatabaseModule } from "./database/database.module";
 import { UsersModule } from "./users/users.module";
+import { HealthModule } from "./health/health.module";
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UsersModule } from "./users/users.module";
     }),
     DatabaseModule,
     UsersModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

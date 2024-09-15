@@ -1,0 +1,30 @@
+## Get A All users with limit and offset
+GET http://localhost:3000/api/users/read?limit=10&offset=20
+Accept: application/json
+###
+
+
+## Get A All users
+GET http://localhost:3000/api/users/read/
+Accept: application/json
+###
+
+
+
+## Get A User by Email
+GET http://localhost:3000/api/users/read/?email=jordach@me.com
+Accept: application/json
+
+###
+
+## Get A user by ID
+GET http://localhost:3000/api/users/read/12
+Accept: application/json
+
+###
+
+## Get A user by Phone number
+GET http://localhost:3000/api/users/read/?phone=0629955944
+Accept: application/json
+
+###

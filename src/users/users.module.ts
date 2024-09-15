@@ -1,15 +1,15 @@
 import { Module } from "@nestjs/common";
 
-import { ReadOnlyUserService } from "./read-only.user.service";
-import { WriteUserService } from "./write.user.service";
-import { ReadWriteUsersController } from "./read-write-users.controller";
-import { UserSignInController } from "./user.sign-in.controller";
+import { ReadOnlyUserService } from "./read/read-only.user.service";
+import { WriteUserService } from "./write/write.user.service";
+import { ReadUsersController } from "./read/read-users.controller";
+import { UserAuthController } from "./user-auth.controller";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./entity/user.entity";
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   providers: [ReadOnlyUserService, WriteUserService],
-  controllers: [ReadWriteUsersController, UserSignInController],
+  controllers: [ReadUsersController, UserAuthController],
 })
 export class UsersModule {}

@@ -1,0 +1,27 @@
+### SING-IN
+POST http://localhost:3000/api/users/auth/sing-in/
+Content-Type: application/json
+
+{
+  "phone": "0629955944",
+  "password": "123",
+  "country": "content"
+}
+
+
+### SING-IN
+GET http://localhost:3000/api/users/auth/sing-out/
+Accept: application/json
+
+
+
+### LOGIN-IN
+POST http://localhost:3000/api/users/auth/login/
+Content-Type: application/json
+Authorization: Bearer
+
+{
+  "phone": "0629955944",
+  "password": "123",
+  "country": "content"
+}

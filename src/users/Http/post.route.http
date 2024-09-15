@@ -1,0 +1,31 @@
+
+### Send POST request with json body
+POSexamples.http-client.intellij.net/postT https://
+Content-Type: application/json
+
+
+### CREATE
+POST http://localhost:3000/api/users/write
+Content-Type: application/json
+
+{
+  "fistName": "jordach",
+  "lastName": 999,
+  "email": "jordach@me.",
+  "phone": "0629955944",
+  "password": "123",
+  "country": "content"
+}
+
+### UPDATE
+PATCH http://localhost:3000/api/users/write/12
+Content-Type: application/json
+
+{
+  "fistName": "jordach",
+  "lastName": 999,
+  "email": "jordach@me.",
+  "phone": "0629955944",
+  "password": "123",
+  "country": "content"
+}

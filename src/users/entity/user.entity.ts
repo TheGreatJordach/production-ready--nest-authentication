@@ -17,11 +17,11 @@ export class User {
   fistName: string;
   @Column()
   lastName: string;
-  @Column()
+  @Column({ unique: true })
   email: string;
   @Column()
   password: string;
-  @Column()
+  @Column({ unique: true })
   phone: string;
 
   @Column(() => RegistryDate, { prefix: false })

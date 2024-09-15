@@ -1,0 +1,3 @@
+## Get A user by ID
+DELETE http://localhost:3000/api/users/12
+Accept: application/json

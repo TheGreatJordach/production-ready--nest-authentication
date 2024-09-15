@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { Module, ValidationPipe } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigurationModule } from "./configuration/configuration.module";
@@ -6,6 +6,8 @@ import { CacheModule } from "@nestjs/cache-manager";
 import { DatabaseModule } from "./database/database.module";
 import { UsersModule } from "./users/users.module";
 import { HealthModule } from "./health/health.module";
+import { APP_INTERCEPTOR, APP_PIPE } from "@nestjs/core";
+import { ResponseInterceptor } from "./users/interceptors/reponse.interceptor";
 
 @Module({
   imports: [
@@ -40,6 +42,23 @@ import { HealthModule } from "./health/health.module";
     HealthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ResponseInterceptor,
+    },
+    {
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+        transformOptions: {
+          enableImplicitConversion: true,
+        },
+      }),
+    },
+  ],
 })
 export class AppModule {}

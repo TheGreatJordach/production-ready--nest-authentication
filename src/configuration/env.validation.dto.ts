@@ -1,7 +1,7 @@
 import {
   IsNotEmptyAndPositive,
   IsNotEmptyString,
-} from "./decorators/common-validations.decorators";
+} from "../decorators/common-validations.decorators";
 import { IsBoolean } from "class-validator";
 
 export class EnvironmentValidationDto {

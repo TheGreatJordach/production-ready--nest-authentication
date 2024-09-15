@@ -23,5 +23,9 @@ export const getDatabaseConfig = (
     idleTimeoutMillis: configService.getOrThrow<number>(
       "DATASOURCE_IDLE_TIMEOUT"
     ),
+    healthCheckTimeoutMillis: configService.getOrThrow<number>(
+      "DATASOURCE_HEALTH_CHECK_TIMEOUT"
+    ),
+    logLevel: configService.getOrThrow<string>("LOG_LEVEL"),
   },
 });

@@ -1,6 +1,10 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { HealthController } from "./health.controller";
-import { HttpHealthIndicator, TypeOrmHealthIndicator } from "@nestjs/terminus";
+import {
+  HealthCheckService,
+  TypeOrmHealthIndicator,
+  HttpHealthIndicator,
+} from "@nestjs/terminus";
 import { ConfigService } from "@nestjs/config";
 
 describe("HealthController", () => {
@@ -10,10 +14,22 @@ describe("HealthController", () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [HealthController],
       providers: [
-        HealthController,
-        TypeOrmHealthIndicator,
-        HttpHealthIndicator,
-        ConfigService,
+        {
+          provide: HealthCheckService,
+          useValue: { check: jest.fn().mockReturnValue({ status: "ok" }) }, // Mock HealthCheckService
+        },
+        {
+          provide: TypeOrmHealthIndicator,
+          useValue: { pingCheck: jest.fn() }, // Mock TypeOrmHealthIndicator
+        },
+        {
+          provide: HttpHealthIndicator,
+          useValue: { pingCheck: jest.fn() }, // Mock HttpHealthIndicator
+        },
+        {
+          provide: ConfigService,
+          useValue: {}, // Mock ConfigService
+        },
       ],
     }).compile();
 
